@@ -11,6 +11,26 @@ body {
     align-content: center;
 }
 
+.user-input-fields {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-player-names {
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 75vw;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.reset {
+    max-width: fit-content;
+    align-self: center;
+    margin-bottom: 3rem;
+    padding: 8px;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
