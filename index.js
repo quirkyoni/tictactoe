@@ -1,13 +1,21 @@
+const resetButton = document.querySelector(".reset")
+
 const gameboard = (() => {
     const grid = [
-    ["x"],[],[],
-    [],["x"],[],
-    [],[],["x"]
+    [],[],[],
+    [],[],[],
+    [],[],[]
     ]
 
-    const test = () => {
-        console.log(grid[0], "hello world")
+    const reset = () => {
+        resetButton.addEventListener("click", () => {
+            window.location.reload()
+            
+        })
+
     }
 
-    return {grid, test}
+    return {grid, reset}
 })()
+
+gameboard.reset()

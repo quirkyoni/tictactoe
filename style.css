@@ -24,11 +24,26 @@ body {
     text-align: center;
 }
 
+.display-controller {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0 3rem 0;
+
+}
+
 .reset {
     max-width: fit-content;
     align-self: center;
-    margin-bottom: 3rem;
     padding: 8px;
+    margin: 0 1rem;
+}
+
+.start {
+    max-width: fit-content;
+    align-self: center;
+    padding: 8px;
+    margin: 0 1rem;
 }
 
 .grid {
