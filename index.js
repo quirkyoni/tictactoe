@@ -1,3 +1,4 @@
+const grid = document.querySelector(".grid")
 const addPlayerNames = document.querySelector(".add-player-names")
 const playerOne = document.querySelector(".player-1")
 const playerOneInput = document.querySelector(".form-field-p1")
@@ -7,11 +8,15 @@ const startButton = document.querySelector(".start")
 const resetButton = document.querySelector(".reset")
 
 const tictactoe = (() => {
-    const grid = [
-        [], [], [],
-        [], [], [],
-        [], [], []
-    ]
+    const gameboard = () => {
+        for (i = 0; i < 9; i++) {
+            const gridItem = document.createElement("div")
+            gridItem.className = "grid-item " + `${i}`
+            gridItem.textContent = "a"
+            grid.appendChild(gridItem)
+        }
+        console.log(grid)
+    }
 
     const reset = () => {
         resetButton.addEventListener("click", () => {
@@ -42,12 +47,14 @@ const tictactoe = (() => {
                 
                 addPlayerNames.appendChild(playerOneName)
                 addPlayerNames.appendChild(playerTwoName)
+
+                gameboard()
             }
         })
     }
 
 
-    return { grid, reset, checkPlayerName}
+    return { gameboard, reset, checkPlayerName}
 })()
 
 tictactoe.reset()
