@@ -56,3 +56,8 @@ body {
     background-color: #dee2e6;
     padding: 2rem
 }
+
+.grid-item:hover {
+    cursor: pointer;
+    background-color: #6c757d;
+}
