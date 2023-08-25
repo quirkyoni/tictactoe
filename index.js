@@ -8,14 +8,17 @@ const startButton = document.querySelector(".start")
 const resetButton = document.querySelector(".reset")
 
 const tictactoe = (() => {
-    const gameboard = () => {
+
+    let gameboardGrid = [];
+
+    const createGameboard = () => {
         for (i = 0; i < 9; i++) {
             const gridItem = document.createElement("div")
             gridItem.className = "grid-item " + `${i}`
             gridItem.textContent = "a"
             grid.appendChild(gridItem)
+            gameboardGrid.push(grid)
         }
-        console.log(grid)
     }
 
     const reset = () => {
@@ -44,17 +47,18 @@ const tictactoe = (() => {
                 const pTwoName = document.createElement("p")
                 pTwoName.textContent = `${playerTwoInput.value}`
                 playerTwoName.appendChild(pTwoName)
-                
+
                 addPlayerNames.appendChild(playerOneName)
                 addPlayerNames.appendChild(playerTwoName)
 
-                gameboard()
+                createGameboard()
+                console.log(gameboardGrid)
             }
         })
     }
 
 
-    return { gameboard, reset, checkPlayerName}
+    return { createGameboard, reset, checkPlayerName }
 })()
 
 tictactoe.reset()
