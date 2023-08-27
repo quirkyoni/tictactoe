@@ -7,10 +7,10 @@ const playerTwoInput = document.querySelector(".form-field-p2")
 const startButton = document.querySelector(".start")
 const resetButton = document.querySelector(".reset")
 
-const playerFactory = (name, token) => {
+const playerFactory = (name, token, active) => {
 
 
-    return { name, token }
+    return { name, token, active }
 }
 
 const tictactoe = (() => {
@@ -24,26 +24,22 @@ const tictactoe = (() => {
             gridItem.className = "grid-item"
             gridItem.setAttribute("id", `${i}`)
             grid.appendChild(gridItem)
-            gameboardGrid.push(grid)
+            gameboardGrid.push(gridItem)
         }
     }
 
-    const reset = () => {
-        resetButton.addEventListener("click", () => {
-            window.location.reload()
-        })
-    }
+    resetButton.addEventListener("click", () => {
+        window.location.reload()
+    })
 
     const checkPlayerName = () => {
         startButton.addEventListener("click", () => {
             if (playerOneInput.value == "" || playerTwoInput.value == "") {
                 alert("Please enter a name for both players.")
             } else if (playerOneInput.value !== "" || playerTwoInput.value !== "") {
-                console.log("start game")
                 playerOne.remove()
-                const newPlayerOne = playerFactory(`${playerOneInput.value}`, "X")
+                const newPlayerOne = playerFactory(`${playerOneInput.value}`, "X", true)
                 players.push(newPlayerOne)
-                console.log(newPlayerOne)
                 const playerOneName = document.createElement("div")
                 playerOneName.className = "player-1"
                 const pOneName = document.createElement("p")
@@ -52,9 +48,8 @@ const tictactoe = (() => {
 
 
                 playerTwo.remove()
-                const newPlayerTwo = playerFactory(`${playerTwoInput.value}`, "O")
+                const newPlayerTwo = playerFactory(`${playerTwoInput.value}`, "O", false)
                 players.push(newPlayerTwo)
-                console.log(newPlayerTwo)
                 const playerTwoName = document.createElement("div")
                 playerTwoName.className = "player-2"
                 const pTwoName = document.createElement("p")
@@ -66,15 +61,24 @@ const tictactoe = (() => {
 
                 startButton.disabled = true;
                 createGameboard()
-                console.log(gameboardGrid)
-                console.log(players)
+
+                let activePlayer = players[0]
+
+                document.addEventListener("click", (e) => {
+                    if (e.target.className == "grid-item") {
+                        var markerSpot = e.target
+                        console.log(markerSpot)
+                        markerSpot.textContent = `${activePlayer.token}`
+                    }
+                })
+
+
+                console.log(activePlayer)
             }
         })
     }
 
-
-    return { createGameboard, reset, checkPlayerName }
+    return { createGameboard, checkPlayerName }
 })()
 
-tictactoe.reset()
 tictactoe.checkPlayerName()
