@@ -7,10 +7,10 @@ const playerTwoInput = document.querySelector(".form-field-p2")
 const startButton = document.querySelector(".start")
 const resetButton = document.querySelector(".reset")
 
-const playerFactory = (name, token, active) => {
+const playerFactory = (name, token) => {
 
 
-    return { name, token, active }
+    return { name, token }
 }
 
 const tictactoe = (() => {
@@ -38,7 +38,7 @@ const tictactoe = (() => {
                 alert("Please enter a name for both players.")
             } else if (playerOneInput.value !== "" || playerTwoInput.value !== "") {
                 playerOne.remove()
-                const newPlayerOne = playerFactory(`${playerOneInput.value}`, "X", true)
+                const newPlayerOne = playerFactory(`${playerOneInput.value}`, "X")
                 players.push(newPlayerOne)
                 const playerOneName = document.createElement("div")
                 playerOneName.className = "player-1"
@@ -48,7 +48,7 @@ const tictactoe = (() => {
 
 
                 playerTwo.remove()
-                const newPlayerTwo = playerFactory(`${playerTwoInput.value}`, "O", false)
+                const newPlayerTwo = playerFactory(`${playerTwoInput.value}`, "O")
                 players.push(newPlayerTwo)
                 const playerTwoName = document.createElement("div")
                 playerTwoName.className = "player-2"
@@ -64,16 +64,22 @@ const tictactoe = (() => {
 
                 let activePlayer = players[0]
 
+                const switchActivePlayer = () => {
+                    if (activePlayer == players[0]) {
+                        activePlayer = players[1]
+                    } else {
+                        activePlayer = players[0]
+                    }
+                }
+
                 document.addEventListener("click", (e) => {
                     if (e.target.className == "grid-item") {
                         var markerSpot = e.target
-                        console.log(markerSpot)
                         markerSpot.textContent = `${activePlayer.token}`
+                        switchActivePlayer()
+                        console.log(players)
                     }
                 })
-
-
-                console.log(activePlayer)
             }
         })
     }
