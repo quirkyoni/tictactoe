@@ -73,11 +73,13 @@ const tictactoe = (() => {
                 }
 
                 document.addEventListener("click", (e) => {
-                    if (e.target.className == "grid-item") {
+                    if (e.target.className == "grid-item" && e.target.textContent == "") {
                         var markerSpot = e.target
                         markerSpot.textContent = `${activePlayer.token}`
                         switchActivePlayer()
                         console.log(players)
+                    } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
+                       alert("Enter your token on an empty spot.")
                     }
                 })
             }
