@@ -32,6 +32,26 @@ body {
 
 }
 
+button {
+    min-width: 75px;
+    padding: 1rem;
+    background-color: #457b9d;
+    color: #f1faee;
+    border-color: transparent;
+    border-radius: 10px;
+    border-style: solid;
+    transition: 0.3s;
+    opacity: 1;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.75;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
 .reset {
     max-width: fit-content;
     align-self: center;
