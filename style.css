@@ -1,7 +1,6 @@
 * {
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
 }
 
 body {
@@ -85,10 +84,20 @@ button:hover {
 
 .grid-item {
     background-color: #dee2e6;
-    padding: 2rem
+    min-width: 75px;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .grid-item:hover {
     cursor: pointer;
     background-color: #6c757d;
+}
+
+.player-1>p,
+.player-2>p {
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid black;
 }

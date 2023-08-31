@@ -74,8 +74,11 @@ const tictactoe = (() => {
 
                 document.addEventListener("click", (e) => {
                     if (e.target.className == "grid-item" && e.target.textContent == "") {
-                        var markerSpot = e.target
-                        markerSpot.textContent = `${activePlayer.token}`
+                        const markerSpot = e.target
+                        const markerPara = document.createElement("p")
+                        markerPara.className = "marker"
+                        markerSpot.appendChild(markerPara)
+                        markerPara.textContent = `${activePlayer.token}`
                         switchActivePlayer()
                         console.log(players)
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
