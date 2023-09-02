@@ -101,3 +101,8 @@ button:hover {
     padding: 0.5rem 1rem;
     border-bottom: 2px solid black;
 }
+
+.marker {
+    font-weight: bold;
+    font-size: 2rem;
+}

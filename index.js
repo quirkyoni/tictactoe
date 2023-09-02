@@ -80,7 +80,6 @@ const tictactoe = (() => {
                         markerSpot.appendChild(markerPara)
                         markerPara.textContent = `${activePlayer.token}`
                         switchActivePlayer()
-                        console.log(players)
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
                        alert("Enter your token on an empty spot.")
                     }
