@@ -79,7 +79,10 @@ const tictactoe = (() => {
                         markerPara.className = "marker"
                         markerSpot.appendChild(markerPara)
                         markerPara.textContent = `${activePlayer.token}`
+                        gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
+                        console.log(gameboardGrid)
                         switchActivePlayer()
+                        
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
                        alert("Enter your token on an empty spot.")
                     }
@@ -87,6 +90,8 @@ const tictactoe = (() => {
             }
         })
     }
+
+
 
     return { createGameboard, checkPlayerName }
 })()
