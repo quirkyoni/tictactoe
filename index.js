@@ -18,6 +18,17 @@ const tictactoe = (() => {
     let gameboardGrid = [];
     let players = []
 
+    const winConditions = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
+
     const createGameboard = () => {
         for (i = 0; i < 9; i++) {
             const gridItem = document.createElement("div")
@@ -80,16 +91,19 @@ const tictactoe = (() => {
                         markerSpot.appendChild(markerPara)
                         markerPara.textContent = `${activePlayer.token}`
                         gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
-                        console.log(gameboardGrid)
+
+
                         switchActivePlayer()
-                        
+                        console.log(players)
+
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
-                       alert("Enter your token on an empty spot.")
+                        alert("Enter your token on an empty spot.")
                     }
                 })
             }
         })
     }
+
 
 
 
