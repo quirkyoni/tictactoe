@@ -92,9 +92,11 @@ const tictactoe = (() => {
                         markerPara.textContent = `${activePlayer.token}`
                         gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
 
+                        if (gameboardGrid[0] === "X" && gameboardGrid[1] === "X" && gameboardGrid[2] === "X") {
+                            console.log("winner")
+                        }
 
                         switchActivePlayer()
-                        console.log(players)
 
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
                         alert("Enter your token on an empty spot.")
