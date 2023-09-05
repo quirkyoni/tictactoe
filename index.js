@@ -1,3 +1,5 @@
+const header = document.querySelector("header")
+const section = document.querySelector("section")
 const grid = document.querySelector(".grid")
 const addPlayerNames = document.querySelector(".add-player-names")
 const playerOne = document.querySelector(".player-1")
@@ -17,6 +19,7 @@ const tictactoe = (() => {
 
     let gameboardGrid = [];
     let players = []
+    let turnCounter = 0;
 
     const winConditions = [
         [0, 1, 2],
@@ -35,7 +38,7 @@ const tictactoe = (() => {
             gridItem.className = "grid-item"
             gridItem.setAttribute("id", `${i}`)
             grid.appendChild(gridItem)
-            gameboardGrid.push(gridItem)
+            gameboardGrid.push(gridItem.innerHTML)
         }
     }
 
@@ -71,6 +74,7 @@ const tictactoe = (() => {
                 addPlayerNames.appendChild(playerTwoName)
 
                 startButton.disabled = true;
+                startButton.style.opacity = "0.75"
                 createGameboard()
 
                 let activePlayer = players[0]
@@ -85,25 +89,49 @@ const tictactoe = (() => {
 
                 document.addEventListener("click", (e) => {
                     if (e.target.className == "grid-item" && e.target.textContent == "") {
+                        turnCounter++
                         const markerSpot = e.target
+                        markerSpot.style.backgroundColor = "#6c757d"
                         const markerPara = document.createElement("p")
                         markerPara.className = "marker"
                         markerSpot.appendChild(markerPara)
                         markerPara.textContent = `${activePlayer.token}`
                         gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
+                        console.log(gameboardGrid)
 
-                        winConditions.filter((condition) => {
-                            if (gameboardGrid[condition[0]] === "X" && gameboardGrid[condition[1]] === "X" && gameboardGrid[condition[2]] === "X") {
-                                console.log("hello")
-                            }
-                            if (gameboardGrid[condition[0]] === "O" && gameboardGrid[condition[1]] === "O" && gameboardGrid[condition[2]] === "O") {
-                                console.log("hello O")
-                            }
-                        })
+                        if (turnCounter === 9) {
+                            console.log("tie")
+                        }
+
                         switchActivePlayer()
 
+                        winConditions.forEach((condition) => {
+                            if (gameboardGrid[condition[0]] === "X" && gameboardGrid[condition[1]] === "X" && gameboardGrid[condition[2]] === "X") {
+                                const winner = document.createElement("div")
+                                winner.className = "winner"
+                                const winnerPara = document.createElement("p")
+                                winnerPara.textContent = `${players[0].name} is the winner!`
+                                winner.appendChild(winnerPara)
+                                playerOneName.remove()
+                                playerTwoName.remove()
+                                addPlayerNames.appendChild(winner)
+                                grid.style.pointerEvents = "none"
+                            } else if (gameboardGrid[condition[0]] === "O" && gameboardGrid[condition[1]] === "O" && gameboardGrid[condition[2]] === "O") {
+                                const winner = document.createElement("div")
+                                winner.className = "winner"
+                                const winnerPara = document.createElement("p")
+                                winnerPara.textContent = `${players[1].name} is the winner!`
+                                winner.appendChild(winnerPara)
+                                playerOneName.remove()
+                                playerTwoName.remove()
+                                addPlayerNames.appendChild(winner)
+                                grid.style.pointerEvents = "none"
+                            }
+                        })
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
                         alert("Enter your token on an empty spot.")
+                    } else if (e.target.innerHTML === "X" || e.target.innerHTML === "O") {
+                        console.log("tie")
                     }
                 })
             }
