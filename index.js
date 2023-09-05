@@ -92,10 +92,14 @@ const tictactoe = (() => {
                         markerPara.textContent = `${activePlayer.token}`
                         gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
 
-                        if (gameboardGrid[0] === "X" && gameboardGrid[1] === "X" && gameboardGrid[2] === "X") {
-                            console.log("winner")
-                        }
-
+                        winConditions.filter((condition) => {
+                            if (gameboardGrid[condition[0]] === "X" && gameboardGrid[condition[1]] === "X" && gameboardGrid[condition[2]] === "X") {
+                                console.log("hello")
+                            }
+                            if (gameboardGrid[condition[0]] === "O" && gameboardGrid[condition[1]] === "O" && gameboardGrid[condition[2]] === "O") {
+                                console.log("hello O")
+                            }
+                        })
                         switchActivePlayer()
 
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
