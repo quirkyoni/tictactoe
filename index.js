@@ -20,6 +20,7 @@ const tictactoe = (() => {
     let gameboardGrid = [];
     let players = []
     let turnCounter = 0;
+    let winnerBool = false;
 
     const winConditions = [
         [0, 1, 2],
@@ -99,10 +100,6 @@ const tictactoe = (() => {
                         gameboardGrid.splice(markerSpot.id, 1, activePlayer.token)
                         console.log(gameboardGrid)
 
-                        if (turnCounter === 9) {
-                            console.log("tie")
-                        }
-
                         switchActivePlayer()
 
                         winConditions.forEach((condition) => {
@@ -116,6 +113,7 @@ const tictactoe = (() => {
                                 playerTwoName.remove()
                                 addPlayerNames.appendChild(winner)
                                 grid.style.pointerEvents = "none"
+                                winnerBool = true;
                             } else if (gameboardGrid[condition[0]] === "O" && gameboardGrid[condition[1]] === "O" && gameboardGrid[condition[2]] === "O") {
                                 const winner = document.createElement("div")
                                 winner.className = "winner"
@@ -126,12 +124,23 @@ const tictactoe = (() => {
                                 playerTwoName.remove()
                                 addPlayerNames.appendChild(winner)
                                 grid.style.pointerEvents = "none"
+                                winnerBool = true
                             }
                         })
                     } else if (e.target.className == "grid-item" && e.target.textContent !== "") {
                         alert("Enter your token on an empty spot.")
-                    } else if (e.target.innerHTML === "X" || e.target.innerHTML === "O") {
-                        console.log("tie")
+                    }
+
+                    if (turnCounter === 9 && winnerBool === false) {
+                        const tieGame = document.createElement("div")
+                        tieGame.className = "winner"
+                        const tieGamePara = document.createElement("p")
+                        tieGamePara.textContent = "It's a tie game!"
+                        tieGame.appendChild(tieGamePara)
+                        playerOneName.remove()
+                        playerTwoName.remove()
+                        addPlayerNames.appendChild(tieGame)
+                        grid.style.pointerEvents = "none"
                     }
                 })
             }
