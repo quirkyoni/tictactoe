@@ -92,7 +92,7 @@ const tictactoe = (() => {
                     if (e.target.className == "grid-item" && e.target.textContent == "") {
                         turnCounter++
                         const markerSpot = e.target
-                        markerSpot.style.backgroundColor = "#6c757d"
+                        markerSpot.style.backgroundColor = "#4a5d79"
                         const markerPara = document.createElement("p")
                         markerPara.className = "marker"
                         markerSpot.appendChild(markerPara)

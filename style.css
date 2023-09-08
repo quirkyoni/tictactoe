@@ -11,6 +11,10 @@ body {
     align-content: center;
 }
 
+h1 {
+    color: #1d3557;
+}
+
 .user-input-fields {
     display: flex;
     flex-direction: column;
@@ -22,6 +26,10 @@ body {
     min-width: 75vw;
     padding: 1.5rem;
     text-align: center;
+}
+
+.player-1-input, .player-2-input {
+    color: #1d3557;
 }
 
 label {
@@ -79,11 +87,11 @@ button:hover {
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
+    gap: 2px;
 }
 
 .grid-item {
-    background-color: #dee2e6;
+    background-color: #a8dadc;
     min-width: 75px;
     min-height: 75px;
     display: flex;
@@ -93,7 +101,7 @@ button:hover {
 
 .grid-item:hover {
     cursor: pointer;
-    background-color: #6c757d;
+    background-color: #1d3557;
 }
 
 .player-1>p,
@@ -105,4 +113,5 @@ button:hover {
 .marker {
     font-weight: bold;
     font-size: 2rem;
+    color: #f1faee;
 }
