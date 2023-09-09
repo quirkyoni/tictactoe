@@ -31,6 +31,7 @@ h1 {
 
 .player-1-input, .player-2-input {
     color: #1d3557;
+    font-weight: bold;
 }
 
 label {
