@@ -1,6 +1,6 @@
 * {
-    margin: 0px;
     padding: 0px;
+    margin: 0px;
 }
 
 body {
@@ -9,6 +9,7 @@ body {
     display: grid;
     place-items: center;
     align-content: center;
+    background-color: #eaf4f4;
 }
 
 h1 {
