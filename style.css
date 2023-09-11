@@ -10,6 +10,11 @@ body {
     place-items: center;
     align-content: center;
     background-color: #eaf4f4;
+    background-image: url(/Images/wave.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    background-attachment: fixed;
 }
 
 h1 {
