@@ -104,11 +104,13 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 0.3s ease-in-out;
 }
 
 .grid-item:hover {
     cursor: pointer;
     background-color: #1d3557;
+    transition: 0.3s ease-in-out;
 }
 
 .player-1>p,
