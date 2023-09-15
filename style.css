@@ -117,11 +117,16 @@ button:hover {
 .player-1>p,
 .player-2>p {
     padding: 0.5rem 1rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #1d3557;
 }
 
 .winner {
     font-size: 1.25rem;
+}
+
+.winner p {
+    border-bottom: 2px solid #1d3557;
+    padding: 1rem;
 }
 
 .marker {
