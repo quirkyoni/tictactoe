@@ -49,6 +49,10 @@ input {
     padding: 0.5rem;
 }
 
+input:focus {
+    outline: 0;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
