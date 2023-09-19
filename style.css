@@ -99,7 +99,7 @@ button:hover {
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+    gap: 3px;
 }
 
 .grid-item {
